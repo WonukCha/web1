@@ -4,34 +4,46 @@
     <meta charset="utf-8">
     <title></title>
     <script>
+    var Link =
+    {
+      setColor:function(color)
+      {
+        var alist = document.querySelectorAll('a')
+        var i = 0;
+        while(i < alist.length)
+        {
+          alist[i].style.color = color;
+          i = i+1;
+        }
+      }
+    }
+    var Body ={
+      setColor:function(color){
+        document.querySelector('body').style.color = color;
+      },
+      SetBackgroundColor:function(color){
+        document.querySelector('body').style.backgroundColor = color;
+      }
+    }
+
     function nightdayHandler(selt)
     {
       var taget = document.querySelector('body');
       if(selt.value === 'night')
       {
-        taget.style.backgroundColor = 'black';
-        taget.style.color = 'white';
+        Body.setColor('white');
+        Body.SetBackgroundColor('black');
         selt.value = 'day';
+        Link.setTagColor('a','powderblue');
 
-        var alist = document.querySelectorAll('a')
-        var i = 0;
-        while(i < alist.length){
-        alist[i].style.color = 'powderblue';
-        i = i+1;
-        }
       }
       else
       {
-        taget.style.backgroundColor = 'white';
-        taget.style.color = 'black';
+        Body.SetBackgroundColor('white');
+        Body.setColor('black');
         selt.value = 'night';
+        Link.setTagColor('a','blue');
 
-        var alist = document.querySelectorAll('a')
-        var i = 0;
-        while(i < alist.length){
-        alist[i].style.color = 'blue';
-        i = i+1;
-        }
       }
     }
     </script>
@@ -50,9 +62,7 @@
     <input type="button" value="night" onclick="
     nightdayHandler(this)
     ">
-    <input type="button" value="night" onclick="
-    nightdayHandler(this)
-    ">
+
 
     <div id= grid>
     <ol>
